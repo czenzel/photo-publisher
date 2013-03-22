@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Open Picasa HTML Generator</title>
+
+<!-- //
+Open Picasa HTML Generator
+
+Please read the README before use of source code or application.
+
+Copyright 2013 Christopher Zenzel
+// -->
+
+<meta name="ROBOTS" content="NONE, NOFOLLOW" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js">
+</script>
+<script type="text/javascript" src="jquery.xdomainajax.xml.js">
+</script>
+<script type="text/javascript" src="openpicasahtml.js">
+</script>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="mobile.css" media="handheld" />
+
+</head>
+<body>
+
+<div id="container">
+
+<!-- // Start // -->
+<h1>Picasa Photographs to HTML</h1>
+<p>
+Take your Google Picasa and Google Plus photographs from the Internet and export them to your blog or static hosting provider without the need for embedded code or server side scripting. Using Open Source APIs, such as jQuery, and the Yahoo YQL Engine, this open source project can deliver pre-generated HTML code for your Google Picasa or Google Plus albums.
+</p>
+<p>
+By default this code will generate photographs in a 2-column format using XHTML compliant DIV tags. This code will generate Wordpress.com friendly code that you can place in your online blog.
+</p>
+
+<h2>Enter your Google Plus or Google Picasa User Name</h2>
+<p>
+Enter your Google Plus or Google Picasa User Name or E-mail Address
+</p>
+<p>
+<input type="text" style="border: 1px solid black; padding: 10px; width: 220px;" id="txtAlbumUser" onkeydown="if (event.keyCode == 13) getAlbumsButton();" /> <input type="button" value="Find Public Albums" onclick="getAlbumsButton();" />
+</p>
+
+<h2>Photo Albums</h2>
+<div id="albumPreviews">
+Please enter your user name or e-mail address above to query the API for your public photo albums.
+</div>
+
+<h2>Photo Selection</h2>
+<p style="text-align: center;">
+<a href="#" onclick="javascript:selectAllPhotos();">Select All</a>
+</p>
+<div id="photoPreviews">
+Please select an album to preview your photos.
+</div>
+<div id="photoSelected">
+A preview of your gallery will show here. Previews might be different when HTML code is exported.
+</div>
+<div style="clear:both;"></div>
+
+<h2>Album HTML Code</h2>
+<textarea id="albumCode" readonly="true">
+</textarea>
+
+<h2>Credits</h2>
+<p>The Open Picasa HTML Generator was brought to you by Christopher Zenzel. A student programmer, lead of teamWeather, and Christopher Zenzel Technologies. Please feel free to modify the source and use this program. Please give credit back to Christopher Zenzel where you can.</p>
+<p>Link back to GitHub so others can find this code and / or GitHub Pages project.</p>
+<p>&copy; Copyright 2013 Christopher Zenzel</p>
+
+<!-- // End // -->
+
+</div>
+
+</body>
+</html>
