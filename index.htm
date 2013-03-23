@@ -18,26 +18,43 @@ Copyright 2013 Christopher Zenzel
 </script>
 <script type="text/javascript" src="openpicasahtml.js">
 </script>
-<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="style.css" />
 <link rel="stylesheet" type="text/css" href="mobile.css" media="handheld" />
 
 </head>
 <body>
 
-<div id="container">
+<div id="container"><div class="innertube">
+
+<!-- // Header // -->
+<h1>Web Photo Publisher</h1>
+<p>
+Google Plus or Google Picasa Web Album HTML Code Generator<br />
+Code Named &quot;Open Picasa HTML&quot;
+</p>
+<p style="text-align: center;">
+<a href="index.htm">Home</a>
+</p>
+<!-- // End Header // -->
 
 <!-- // Start // -->
-<h1>Picasa Photographs to HTML</h1>
 <p>
 Take your Google Picasa and Google Plus photographs from the Internet and export them to your blog or static hosting provider without the need for embedded code or server side scripting. Using Open Source APIs, such as jQuery, and the Yahoo YQL Engine, this open source project can deliver pre-generated HTML code for your Google Picasa or Google Plus albums.
 </p>
 <p>
 By default this code will generate photographs in a 2-column format using XHTML compliant DIV tags. This code will generate Wordpress.com friendly code that you can place in your online blog.
 </p>
+<p>
+This Photo Album HTML Code Generator was developed by student Christopher Zenzel.
+</p>
 
 <h2>Enter your Google Plus or Google Picasa User Name</h2>
 <p>
-Enter your Google Plus or Google Picasa User Name or E-mail Address
+Accepted Values:
+<ul>
+<li>Google Plus or Google Picasa Web Albums User Name or E-mail Address</li>
+<li>Google Plus Public Page Identifier Number</li>
+</ul>
 </p>
 <p>
 <input type="text" style="border: 1px solid black; padding: 10px; width: 220px;" id="txtAlbumUser" onkeydown="if (event.keyCode == 13) getAlbumsButton();" /> <input type="button" value="Find Public Albums" onclick="getAlbumsButton();" />
@@ -50,7 +67,7 @@ Please enter your user name or e-mail address above to query the API for your pu
 
 <h2>Photo Selection</h2>
 <p style="text-align: center;">
-<a href="#" onclick="javascript:selectAllPhotos();">Select All</a>
+<a href="javascript:selectAllPhotos();">Select All</a>
 </p>
 <div id="photoPreviews">
 Please select an album to preview your photos.
@@ -71,7 +88,7 @@ A preview of your gallery will show here. Previews might be different when HTML 
 
 <!-- // End // -->
 
-</div>
+</div></div>
 
 </body>
 </html>

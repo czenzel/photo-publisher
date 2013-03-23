@@ -79,7 +79,7 @@ function getPhotosInfo(data) {
 
 	$(photosFeed).find("entry").each(function() {
 		var thumbnail = $(this).find("thumbnail").eq(0).attr('url');
-		outputHtml += '<a href="#" onclick="selectPhoto(' + photoIndex + ');"><img src="' + thumbnail + '" alt="Thumbnail Preview" /></a>';
+		outputHtml += '<a href="javascript:selectPhoto(' + photoIndex + ');"><img src="' + thumbnail + '" alt="Thumbnail Preview" /></a>';
 		photoIndex++;
 	});
 
@@ -102,7 +102,7 @@ function getAlbumsInfo(data) {
 		var albumFeed = $(this).find("link[rel='http://schemas.google.com/g/2005#feed']").attr('href');
 		var albumPreview = $(this).find("summary").text();
 
-		outputHtml += '<li><a href="#" onclick="getPhotosFromAlbum(\'' + albumFeed + '\');">' + albumTitle + '</a></li>';
+		outputHtml += '<li><a href="javascript:getPhotosFromAlbum(\'' + albumFeed + '\');">' + albumTitle + '</a></li>';
 	});
 
 	outputHtml += '</ul>';

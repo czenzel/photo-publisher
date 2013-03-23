@@ -1,33 +1,3 @@
-#photoPreviews img {
-	margin: 10px;
-}
-
-#photoPreviews {
-	border: 1px solid black;
-	width: 100%; margin: 5px; height: 240px; overflow: auto;
-	margin-bottom: 15px;
-}
-
-#photoSelected {
-	border: 1px solid black;
-	width: 100%; margin: 5px; height: 240px; overflow: auto;
-}
-
-#albumPreviews {
-	border: 1px solid black;
-}
-
-#albumCode {
-	height: 200px;
-	width: 100%;
-	overflow: auto;
-	border: 1px solid black;
-}
-
 #container {
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 30px;
-	margin-top: 30px;
+	width: 90% !important;
 }
