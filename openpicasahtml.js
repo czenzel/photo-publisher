@@ -55,6 +55,7 @@ function selectAllPhotos() {
 	var photoIndex = 0;
 	$(photosFeed).find("entry").each(function() {
 		selectedPhotos[photoIndex] = photoIndex;
+		$("#spht_" + photoIndex).attr('class', 'selectedphoto');
 		photoIndex++;
 	});
 	refreshSelectedPhotos();
@@ -64,8 +65,10 @@ function selectPhoto(photoId) {
 	if (selectedPhotos.indexOf(photoId) != -1) {
 		var toSplice = selectedPhotos.indexOf(photoId);
 		selectedPhotos.splice(toSplice, 1);
+		$("#spht_" + photoId).attr('class', 'unselectphoto');
 	} else {
 		selectedPhotos[selectedPhotos.length++] = photoId;
+		$("#spht_" + photoId).attr('class', 'selectedphoto');
 	}
 	refreshSelectedPhotos();
 }
@@ -79,7 +82,7 @@ function getPhotosInfo(data) {
 
 	$(photosFeed).find("entry").each(function() {
 		var thumbnail = $(this).find("thumbnail").eq(0).attr('url');
-		outputHtml += '<a href="javascript:selectPhoto(' + photoIndex + ');"><img src="' + thumbnail + '" alt="Thumbnail Preview" /></a>';
+		outputHtml += '<a href="javascript:selectPhoto(' + photoIndex + ');"><img src="' + thumbnail + '" alt="Thumbnail Preview" id="spht_' + photoIndex + '" /></a>';
 		photoIndex++;
 	});
 

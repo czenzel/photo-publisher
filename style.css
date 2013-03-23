@@ -52,3 +52,12 @@ a:hover {
 	margin-top: 30px;
 	background: White;
 }
+
+.selectedphoto {
+	border: 4px solid green;
+}
+
+.unselectphoto {
+	border: 0px solid white;
+}
+
