@@ -4,6 +4,15 @@
 
  ALPHA Version
  Copyright 2013 Christopher David Zenzel
+ ALL RIGHTS RESERVED
+
+
+ PLEASE SUPPORT MY EDUCATION AND DEVELOPMENT BY PURCHASING AN APP
+ OF MINE FROM ONE OF THE APP STORES.
+
+ THANK YOU.
+
+ To use this code on your own site please contact me. See README.
  */
 
 var selectedPhotos = Array();
@@ -71,6 +80,35 @@ function selectPhoto(photoId) {
 		$("#spht_" + photoId).attr('class', 'selectedphoto');
 	}
 	refreshSelectedPhotos();
+}
+
+function getAlbumPlus() {
+    
+    var albumLink = document.getElementById('txtAlbumLink').value;
+    var albumAuthPrefix = 'Gv1sRg';
+
+    var albumRegex = new RegExp('http[s]?[:]\\/\\/plus\\.google\\.com\\/photos\\/(\\d*)\\/albums\\/(\\d*)[?][.*\\&?]?authkey[=](.*)[\\&?.*]?');
+    
+    var match = albumRegex.exec(albumLink);
+    
+    var personid = match[1];
+    var albumid = match[2];
+    var authid = match[3];
+    
+    var link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&authkey=' + albumAuthPrefix + authid + '&hl=en_US';
+    
+    getRemoteXMLQuery(link, getPhotosInfo);
+    
+}
+
+function getAlbumManual() {
+    var personid = document.getElementById('txtUserID').value;
+    var albumid = document.getElementById('txtAlbumID').value;
+    var authid = document.getElementById('txtAuthKeyID').value;
+
+    var link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&authkey=' + authid + '&hl=en_US';
+    
+    getRemoteXMLQuery(link, getPhotosInfo);
 }
 
 function getPhotosInfo(data) {

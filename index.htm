@@ -48,17 +48,34 @@ By default this code will generate photographs in a 2-column format using XHTML 
 This Photo Album HTML Code Generator was developed by student Christopher Zenzel.
 </p>
 
-<h2>Enter your Google Plus or Google Picasa User Name</h2>
-<p>
-Accepted Values:
-<ul>
-<li>Google Plus or Google Picasa Web Albums User Name or E-mail Address</li>
-<li>Google Plus Public Page Identifier Number</li>
-</ul>
-</p>
-<p>
-<input type="text" style="border: 1px solid black; padding: 10px; width: 220px;" id="txtAlbumUser" onkeydown="if (event.keyCode == 13) getAlbumsButton();" /> <input type="button" value="Find Public Albums" onclick="getAlbumsButton();" />
-</p>
+            <h3>Option 1: Lookup Your Public Albums</h3>
+            <p>
+            Accepted Values:
+            <ul>
+                <li>Google Plus or Google Picasa Web Albums User Name or E-mail Address</li>
+                <li>Google Plus Public Page Identifier Number</li>
+            </ul>
+            </p>
+            <p>
+            <input type="text" style="border: 1px solid black; padding: 10px; width: 220px;" id="txtAlbumUser" onkeydown="if (event.keyCode == 13) { getAlbumsButton(); document.getElementById('submitBtn').focus(); }" /> <input type="button" value="Find Public Albums" onclick="getAlbumsButton();" id="submitBtn" />
+            </p>
+            
+            <h3>Option 2: Enter your Album URL</h3>
+            <p>
+            Accepted Values:
+            <ul>
+                <li>Google Plus "Share Link" Link with Authentication Code for Personal Photos</li>
+		<li>Requires an Authentication Key &quot;authkey&quot; Query String to be present. If your album is public please search by user name.</li>
+		<li>You can also enter your Album ID, User ID, and Auth Key directly below.</li>
+            </ul>
+            </p>
+            <p>
+            <input type="text" style="border: 1px solid black; padding: 10px; width: 220px;" id="txtAlbumLink" onkeydown="if (event.keyCode == 13) { getAlbumPlus(); document.getElementById('submitBtn2').focus(); }" /> <input type="button" value="Find Album Information" onclick="getAlbumPlus();" id="submitBtn2" />
+            </p>
+	    <h3>Option 3: Direct Photo, Album, Auth Key Entry</h3>
+            <p>
+            <input type="text" onfocus="if(this.value == 'User') { this.value = ''; }" style="border: 1px solid black; padding: 10px; width: 100px;" id="txtUserID" value="User" /> <input type="text" onfocus="if(this.value == 'Album') { this.value = ''; }" style="border: 1px solid black; padding: 10px; width: 100px;" id="txtAlbumID" value="Album" /> <input type="text" onfocus="if(this.value == 'AuthKey') { this.value = ''; }" style="border: 1px solid black; padding: 10px; width: 100px;" id="txtAuthKeyID" value="AuthKey" /> <input type="button" value="Find Album Information" onclick="getAlbumManual();" id="submitBtn3" />
+            </p>
 
 <h2>Photo Albums</h2>
 <div id="albumPreviews">
@@ -85,6 +102,19 @@ A preview of your gallery will show here. Previews might be different when HTML 
 <p>The Open Picasa HTML Generator was brought to you by Christopher Zenzel. A student programmer, lead of teamWeather, and Christopher Zenzel Technologies. Please feel free to modify the source and use this program. Please give credit back to Christopher Zenzel where you can.</p>
 <p>Link back to GitHub so others can find this code and / or GitHub Pages project.</p>
 <p>&copy; Copyright 2013 Christopher Zenzel</p>
+
+<h2>Buy the Application on the Mac App Store</h2>
+<p>Support the Open Picasa HTML Generator by purchasing a Mac OS X Desktop Application for your machine or one of our other many applications! Support my education and my future plans to become a developer!</p>
+<p>
+<ul>
+<li><strong><a target="_blank" href="https://itunes.apple.com/artist/christopher-zenzel/id317388804?mt=8">My Applications on the iTunes Application Store</a></strong></li>
+<li><strong><a target="_blank" href="https://itunes.apple.com/artist/christopher-zenzel/id317388804?mt=12">My Applications on the Mac Application Store</a></strong></li>
+</ul>
+</p>
+
+<h2>Copyright</h2>
+<p style="text-align: center;">&copy; Copyright 2013 Christopher David Zenzel. All Rights Reserved.</p>
+<p>&nbsp;</p>
 
 <!-- // End // -->
 
