@@ -22,7 +22,28 @@ var photoColumns = 2;
 var photoMargin = 3;
 
 function getPhotosFromAlbum(link) {
-	getRemoteXMLQuery(link, getPhotosInfo);
+//XML: 	getRemoteXMLQuery(link, getPhotosInfo);
+	$.getJSON(
+		link,
+		function (data) {
+			getPhotosInfo(data);
+		}
+	);
+}
+
+function getPhotosInfo(data) {
+	selectedPhotos = Array();
+	photosFeed = data;
+
+	var outputHtml = '';
+	var photoIndex = 0;
+
+	for (photoIndex = 0; photoIndex < photosFeed.feed.entry.length; photoIndex++) {
+		var thumbnail = photosFeed.feed.entry[photoIndex].media$group.media$thumbnail[0].url;
+		outputHtml += '<a href="javascript:selectPhoto(' + photoIndex + ');"><img src="' + thumbnail + '" alt="Thumbnail Preview" id="spht_' + photoIndex + '" /></a>';
+	}
+
+	$("#photoPreviews").html(outputHtml);
 }
 
 function refreshSelectedPhotos() {
@@ -30,8 +51,14 @@ function refreshSelectedPhotos() {
 	var outputImages = Array();
 
 	for (var i = 0; i < selectedPhotos.length; i++) {
+
+/* XML:
 		var thumbnail = $(photosFeed).find("entry").eq(selectedPhotos[i]).find("thumbnail").eq(2).attr('url');
 		var photoLink = $(photosFeed).find("entry").eq(selectedPhotos[i]).find("link[type='text/html']").attr('href');
+*/
+
+		var thumbnail = photosFeed.feed.entry[i].media$group.media$thumbnail[2].url;
+		var photoLink = photosFeed.feed.entry[i].link[1].href;
 
 		outputImages[i] = '<a href="' + photoLink + '" target="_blank"><img src="' + thumbnail + '" alt="" border="0" style="margin: ' + photoMargin + 'px;" /></a>';
 	}
@@ -62,11 +89,10 @@ function refreshSelectedPhotos() {
 
 function selectAllPhotos() {
 	var photoIndex = 0;
-	$(photosFeed).find("entry").each(function() {
+	for (photoIndex = 0; photoIndex < photosFeed.feed.entry.length; photoIndex++) {
 		selectedPhotos[photoIndex] = photoIndex;
 		$("#spht_" + photoIndex).attr('class', 'selectedphoto');
-		photoIndex++;
-	});
+	}
 	refreshSelectedPhotos();
 }
 
@@ -88,17 +114,40 @@ function getAlbumPlus() {
     var albumAuthPrefix = 'Gv1sRg';
 
     var albumRegex = new RegExp('http[s]?[:]\\/\\/plus\\.google\\.com\\/photos\\/(\\d*)\\/albums\\/(\\d*)[?][.*\\&?]?authkey[=](.*)[\\&?.*]?');
+
+    var pageRegex = new RegExp('http[s]?[:]\\/\\/plus\\.google\\.com\\/photos\\/(\\d*)\\/albums\\/(\\d*)[?]?[.*\\&?]?[\\&?.*]?');
     
     var match = albumRegex.exec(albumLink);
+    var matcher2 = pageRegex.exec(albumLink);
+
+    var link = '';
+
+    if (match) {
     
-    var personid = match[1];
-    var albumid = match[2];
-    var authid = match[3];
+        var personid = match[1];
+        var albumid = match[2];
+        var authid = match[3];
     
-    var link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&authkey=' + albumAuthPrefix + authid + '&hl=en_US';
+    	link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&authkey=' + albumAuthPrefix + authid + '&hl=en_US&alt=json';
+
+    } else if (matcher2) {
+
+        var personid = matcher2[1];
+        var albumid = matcher2[2];
+
+    	link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&hl=en_US&alt=json';
+
+    }
     
-    getRemoteXMLQuery(link, getPhotosInfo);
+ //   getRemoteXMLQuery(link, getPhotosInfo);
     
+	$.getJSON(
+		link,
+		function (data) {
+			getPhotosInfo(data);
+		}
+	);
+
 }
 
 function getAlbumManual() {
@@ -106,51 +155,62 @@ function getAlbumManual() {
     var albumid = document.getElementById('txtAlbumID').value;
     var authid = document.getElementById('txtAuthKeyID').value;
 
-    var link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&authkey=' + authid + '&hl=en_US';
+    var link = '';
+
+    if (authid && authid != '' && authid != 'AuthKey') {
+	link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&authkey=' + authid + '&hl=en_US&alt=json';
+    } else {
+	link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&hl=en_US&alt=json';
+    }
     
-    getRemoteXMLQuery(link, getPhotosInfo);
-}
+//    getRemoteXMLQuery(link, getPhotosInfo);
 
-function getPhotosInfo(data) {
-	selectedPhotos = Array();
-	photosFeed = data.results[0].toString().replace(/media\:/ig, '');
+	$.getJSON(
+		link,
+		function (data) {
+			getPhotosInfo(data);
+		}
+	);
 
-	var outputHtml = '';
-	var photoIndex = 0;
-
-	$(photosFeed).find("entry").each(function() {
-		var thumbnail = $(this).find("thumbnail").eq(0).attr('url');
-		outputHtml += '<a href="javascript:selectPhoto(' + photoIndex + ');"><img src="' + thumbnail + '" alt="Thumbnail Preview" id="spht_' + photoIndex + '" /></a>';
-		photoIndex++;
-	});
-
-	$("#photoPreviews").html(outputHtml);
-}
-
-function getAlbumsFromUser(user) {
-	$("#albumPreviews").html("Please wait while we generate your album list . . .");
-	var albums = 'https://picasaweb.google.com/data/feed/base/user/' + user + '?access=public';
-	getRemoteXMLQuery(albums, getAlbumsInfo);
 }
 
 function getAlbumsInfo(data) {
-	var albumsFeed = data.results[0];
+	var albumsFeed = data;
 
 	var outputHtml = '<ul>';
 
-	$(albumsFeed).find("entry").each(function() {
-		var albumTitle = $(this).find("title").text();
-		var albumFeed = $(this).find("link[rel='http://schemas.google.com/g/2005#feed']").attr('href');
-		var albumPreview = $(this).find("summary").text();
+	for (var i = 0; i < albumsFeed.feed.entry.length; i++) {
+		var albumTitle = albumsFeed.feed.entry[i].title.$t;
+		var albumFeed = albumsFeed.feed.entry[i].id.$t;
+
+		var albumRegex = new RegExp('http[s]?\:\/\/picasaweb.google.com\/data\/entry\/base\/user\/(.*)\/albumid\/(.*)');
+		var match = albumRegex.exec(albumFeed);
+
+		albumFeed = "https://picasaweb.google.com/data/feed/base/user/" + match[1] + "/albumid/" + match[2];
 
 		outputHtml += '<li><a href="javascript:getPhotosFromAlbum(\'' + albumFeed + '\');">' + albumTitle + '</a></li>';
-	});
+	}
 
 	outputHtml += '</ul>';
 
 	$("#albumPreviews").html(outputHtml);
 }
 
+function getAlbumsFromUser(user) {
+	$("#albumPreviews").html("Please wait while we generate your album list . . .");
+	var albums = 'https://picasaweb.google.com/data/feed/base/user/' + user + '?access=public&alt=json';
+
+	$.getJSON(
+		albums,
+		function (data) {
+			getAlbumsInfo(data);
+		}
+	);
+
+//	getRemoteXMLQuery(albums, getAlbumsInfo);
+}
+
 function getAlbumsButton() {
 	getAlbumsFromUser(document.getElementById('txtAlbumUser').value);
 }
+
