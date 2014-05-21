@@ -2,17 +2,15 @@
  Open PICASA HTML Generator
  Please retain credits.
 
- ALPHA Version
- Copyright 2013 Christopher David Zenzel
- ALL RIGHTS RESERVED
+ Copyright 2014 Christopher David Zenzel
+ All Rights Reserved
 
+ Please support my education by purchasing an application in the Mac or iTunes App Store!
 
- PLEASE SUPPORT MY EDUCATION AND DEVELOPMENT BY PURCHASING AN APP
- OF MINE FROM ONE OF THE APP STORES.
+License:
 
- THANK YOU.
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/. This is a work of Christopher Zenzel and was published to GitHub to help contribute code to the community to help people build web sites.
 
- To use this code on your own site please contact me. See README.
  */
 
 var selectedPhotos = Array();
@@ -57,8 +55,8 @@ function refreshSelectedPhotos() {
 		var photoLink = $(photosFeed).find("entry").eq(selectedPhotos[i]).find("link[type='text/html']").attr('href');
 */
 
-		var thumbnail = photosFeed.feed.entry[i].media$group.media$thumbnail[2].url;
-		var photoLink = photosFeed.feed.entry[i].link[1].href;
+		var thumbnail = photosFeed.feed.entry[selectedPhotos[i]].media$group.media$thumbnail[2].url;
+		var photoLink = photosFeed.feed.entry[selectedPhotos[i]].link[1].href;
 
 		outputImages[i] = '<a href="' + photoLink + '" target="_blank"><img src="' + thumbnail + '" alt="" border="0" style="margin: ' + photoMargin + 'px;" /></a>';
 	}
@@ -115,11 +113,11 @@ function getAlbumPlus() {
 
     var albumRegex = new RegExp('http[s]?[:]\\/\\/plus\\.google\\.com\\/photos\\/(\\d*)\\/albums\\/(\\d*)[?][.*\\&?]?authkey[=](.*)[\\&?.*]?');
 
-    var pageRegex = new RegExp('http[s]?[:]\\/\\/plus\\.google\\.com\\/photos\\/(\\d*)\\/albums\\/(\\d*)[?]?[.*\\&?]?[\\&?.*]?');
+    var pageRegex = new RegExp('http[s]?[:]\\/\\/plus\\.google\\.com\\/(b\\/\\d*\\/)?photos\\/(\\d*)\\/albums\\/(\\d*)[?]?[.*\\&?]?[\\&?.*]?');
     
     var match = albumRegex.exec(albumLink);
     var matcher2 = pageRegex.exec(albumLink);
-
+    
     var link = '';
 
     if (match) {
@@ -132,8 +130,8 @@ function getAlbumPlus() {
 
     } else if (matcher2) {
 
-        var personid = matcher2[1];
-        var albumid = matcher2[2];
+        var personid = matcher2[2];
+        var albumid = matcher2[3];
 
     	link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&hl=en_US&alt=json';
 
