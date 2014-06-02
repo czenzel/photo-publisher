@@ -56,9 +56,9 @@ function refreshSelectedPhotos() {
 */
 
 		var thumbnail = photosFeed.feed.entry[selectedPhotos[i]].media$group.media$thumbnail[2].url;
-		var photoLink = photosFeed.feed.entry[selectedPhotos[i]].link[1].href;
+		var photoLink = photosFeed.feed.entry[selectedPhotos[i]].content.src;
 
-		outputImages[i] = '<a href="' + photoLink + '" target="_blank"><img src="' + thumbnail + '" alt="" border="0" style="margin: ' + photoMargin + 'px;" /></a>';
+		outputImages[i] = '<a rel="lightbox" href="' + photoLink + '" target="_blank"><img src="' + thumbnail + '" alt="" border="0" style="margin: ' + photoMargin + 'px;" /></a>';
 	}
 
 	var currentColumn = 0;
