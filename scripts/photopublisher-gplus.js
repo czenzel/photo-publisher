@@ -1,15 +1,10 @@
 /*
- Open PICASA HTML Generator
- Please retain credits.
 
- Copyright 2014 Christopher David Zenzel
- All Rights Reserved
+	Photo Publisher by Christopher Zenzel
+	Copyright 2014 Christopher Zenzel. All Rights Reserved.
 
- Please support my education by purchasing an application in the Mac or iTunes App Store!
-
-License:
-
-This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/. This is a work of Christopher Zenzel and was published to GitHub to help contribute code to the community to help people build web sites.
+	Please view the License file for information regarding licensing of the source
+	code of these files on GitHub or Christopher's Research Pages.
 
  */
 
@@ -56,9 +51,9 @@ function refreshSelectedPhotos() {
 */
 
 		var thumbnail = photosFeed.feed.entry[selectedPhotos[i]].media$group.media$thumbnail[2].url;
-		var photoLink = photosFeed.feed.entry[selectedPhotos[i]].link[1].href;
+		var photoLink = photosFeed.feed.entry[selectedPhotos[i]].content.src;
 
-		outputImages[i] = '<a href="' + photoLink + '" target="_blank"><img src="' + thumbnail + '" alt="" border="0" style="margin: ' + photoMargin + 'px;" /></a>';
+		outputImages[i] = '<a rel="lightbox" href="' + photoLink + '" target="_blank"><img src="' + thumbnail + '" alt="" border="0" style="margin: ' + photoMargin + 'px;" /></a>';
 	}
 
 	var currentColumn = 0;
@@ -107,6 +102,8 @@ function selectPhoto(photoId) {
 }
 
 function getAlbumPlus() {
+
+    photoColumns = document.getElementById('numAlbumCols').value;
     
     var albumLink = document.getElementById('txtAlbumLink').value;
     var albumAuthPrefix = 'Gv1sRg';
@@ -135,7 +132,7 @@ function getAlbumPlus() {
 
     	link = 'https://picasaweb.google.com/data/feed/base/user/' + personid + '/albumid/' + albumid + '?kind=photo&hl=en_US&alt=json';
 
-    }
+    } else { return; }
     
  //   getRemoteXMLQuery(link, getPhotosInfo);
     

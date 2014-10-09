@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- // tag:PhotoPublisherTitle // -->
+		<title>Photo Publisher - Google Plus Albums</title>
+		<!-- // tag:PhotoPublisherTitle // -->
+
+		<!-- //
+		Photo Publisher
+		Copyright 2014 Christopher Zenzel. All Rights Reserved.
+		Please refer to the licensing files for more information about the licensing of this source code.
+		// -->
+
+		<style type="text/css">
+		@import url(styles/styles.css);
+		@import url(styles/lightbox.css);
+		</style>
+		<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="scripts/lightbox.min.js"></script>
+
+		<!-- // tag:PhotoPublisherScripts // -->
+		<script type="text/javascript" src="scripts/photopublisher-gplus.js"></script>
+		<!-- // tag:PhotoPublisherScripts // -->
+	</head>
+	<body>
+		<div id="header">
+			<h1 class="site-title"><a href="index.htm">Photo Publisher</a></h1>
+		</div>
+		<div id="container">
+			<div id="inner-container">
+
+<!-- // tag:PhotoPublisher // -->
+<h2>Google Plus Photo Album Publishing</h2>
+<p>
+This tool allows you to use the Google Plus &quot;Share via URL&quot; to quickly place your photographs online into your web site using standard web programming in addition to creating great presentations of your personal photographs.
+</p>
+<h3>Gallery Defaults</h3>
+<p>
+Specify some information on how you want your photography gallery generated. By default all photographs are generated with a link direct to the photograph on your social network with the ability to use the integrated Lightbox in your web site (if the scripts are added appropriately to your site).
+</p>
+<h3>Album Retrieval: Google Plus or Picasa Album Uniform Resource Locator (URL)</h3>
+<p class="input-para">
+<input type="text" id="txtAlbumLink" onkeydown="if (event.keyCode == 13) { getAlbumPlus(); document.getElementById('submitBtn2').focus(); }" />
+</p>
+<h3>Number of Columns</h3>
+<p class="input-para">
+<input type="number" id="numAlbumCols" style="text-align: center;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="2" />
+</p>
+<p class="input-para">
+<input type="button" value="Start Gallery Creation" onclick="getAlbumPlus();" id="submitBtn2" />
+</p>
+<h3>Photo Selection</h3>
+<p>
+Select the photo(s) you wish to include in your web site photography gallery.
+</p>
+<p>
+<div id="photoPreviews">
+</div>
+</p>
+<h3>Gallery Preview</h3>
+<p>
+A preview of your photography gallery for the web will be shown here. Please note that the number of columns here might differ from what your web site will actually show due to the complexity of web layouts. Please note we also integrated the Lightbox script on this page so all images will display using Lightbox.
+</p>
+<div id="photoSelected">
+</div>
+<h3>Gallery Code</h3>
+<p>
+You can obtain the generated photography gallery source code you generated here. Source code is formatted in XHTML using the HTML 5 and CSS 3 standard.
+</p>
+<p class="input-para">
+<textarea id="albumCode" readonly="true">
+</textarea>
+</p>
+<!-- // tag:PhotoPublisher // -->
+
+			</div>
+		</div>
+		<div id="footer">
+			&copy; Copyright 2014 Christopher Zenzel
+		</div>
+	</body>
+</html>
