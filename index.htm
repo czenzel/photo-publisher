@@ -1,114 +1,82 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>Web Photo Publisher</title>
+	<head>
+		<!-- // tag:PhotoPublisherTitle // -->
+		<title>Photo Publisher - Home</title>
+		<!-- // tag:PhotoPublisherTitle // -->
 
-<!-- //
-Web Photo Publisher
+		<!-- //
+		Photo Publisher
+		Copyright 2014 Christopher Zenzel. All Rights Reserved.
+		Please refer to the licensing files for more information about the licensing of this source code.
+		// -->
 
-Please read the README before use of source code or application.
+		<style type="text/css">
+		@import url(styles/styles.css);
+		</style>
+		<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
 
-Copyright 2014 Christopher Zenzel
+		<!-- // tag:PhotoPublisherScripts // -->
 
-This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/. This is a work of Christopher Zenzel and was published to GitHub to help contribute code to the community to help people build web sites.
-// -->
-
-<meta name="ROBOTS" content="NONE, NOFOLLOW" />
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js">
-</script>
-<script type="text/javascript" src="openpicasahtml.js">
-</script>
-
-<link rel="stylesheet" type="text/css" href="style.css" />
-<link rel="stylesheet" type="text/css" href="mobile.css" media="handheld" />
-
-</head>
-<body>
-
-<div id="container"><div class="innertube">
-
-<!-- // Header // -->
-<h1>Web Photo Publisher</h1>
-<p style="text-align: center;">
-<a href="index.htm">Home</a>
-</p>
-<!-- // End Header // -->
-
-<!-- // Start // -->
-<p>Convert your online Google Plus or Google Picasa Photos to presentable web site galleries for your blog or web site. The code generator is designed and maintained by Christopher Zenzel and comes with no guarantees or warantees. All information passed on this page is passed directly to Google's servers for the purposes of retreiving your photographs on albums or pages.</p>
-
-            <h3>Option 1: Lookup Your Public Albums</h3>
-            <p>
-            Accepted Values:
-            <ul>
-                <li>Google Plus or Google Picasa Web Albums User Name or E-mail Address</li>
-                <li>Google Plus Public Page Identifier Number</li>
-            </ul>
-            </p>
-            <p>
-            <input type="text" style="border: 1px solid black; padding: 10px; width: 220px;" id="txtAlbumUser" onkeydown="if (event.keyCode == 13) { getAlbumsButton(); document.getElementById('submitBtn').focus(); }" /> <input type="button" value="Find Public Albums" onclick="getAlbumsButton();" id="submitBtn" />
-            </p>
-            
-            <h3>Option 2: Enter your Album URL</h3>
-            <p>
-            Accepted Values:
-            <ul>
-                <li>Google Plus "Share Link" Link with Authentication Code for Personal Photos</li>
-		<li>Requires an Authentication Key &quot;authkey&quot; Query String to be present. If your album is public please search by user name.</li>
-		<li>You can also enter your Album ID, User ID, and Auth Key directly below.</li>
-            </ul>
-            </p>
-            <p>
-            <input type="text" style="border: 1px solid black; padding: 10px; width: 220px;" id="txtAlbumLink" onkeydown="if (event.keyCode == 13) { getAlbumPlus(); document.getElementById('submitBtn2').focus(); }" /> <input type="button" value="Find Album Information" onclick="getAlbumPlus();" id="submitBtn2" />
-            </p>
-	    <h3>Option 3: Direct Photo, Album, Auth Key Entry</h3>
-            <p>
-            <input type="text" onfocus="if(this.value == 'User') { this.value = ''; }" style="border: 1px solid black; padding: 10px; width: 100px;" id="txtUserID" value="User" /> <input type="text" onfocus="if(this.value == 'Album') { this.value = ''; }" style="border: 1px solid black; padding: 10px; width: 100px;" id="txtAlbumID" value="Album" /> <input type="text" onfocus="if(this.value == 'AuthKey') { this.value = ''; }" style="border: 1px solid black; padding: 10px; width: 100px;" id="txtAuthKeyID" value="AuthKey" /> <input type="button" value="Find Album Information" onclick="getAlbumManual();" id="submitBtn3" />
-            </p>
-
-<h2>Photo Albums</h2>
-<div id="albumPreviews">
-Please enter your user name or e-mail address above to query the API for your public photo albums.
-</div>
-
-<h2>Photo Selection</h2>
-<p style="text-align: center;">
-<a href="javascript:selectAllPhotos();">Select All</a>
-</p>
-<div id="photoPreviews">
-Please select an album to preview your photos.
-</div>
-<div id="photoSelected">
-A preview of your gallery will show here. Previews might be different when HTML code is exported.
-</div>
-<div style="clear:both;"></div>
-
-<h2>Album HTML Code</h2>
-<textarea id="albumCode" readonly="true">
-</textarea>
-
-<h2>Credits</h2>
-<p>&copy; Copyright 2013-14 Christopher Zenzel. All Rights Reserved.</p>
-
-<h2>Buy the Application on the Mac App Store</h2>
-<p>Support the Open Picasa HTML Generator by purchasing a Mac OS X Desktop Application for your machine or one of our other many applications! Support my education and my future plans to become a developer!</p>
+		<!-- // tag:PhotoPublisherScripts // -->
+	</head>
+	<body>
+		<div id="header">
+			<h1 class="site-title"><a href="index.htm">Photo Publisher</a></h1>
+		</div>
+		<div id="container">
+			<div id="inner-container">
+<table border="0" cellpadding="5" cellspacing="4" style="width: 100%;">
+<tr>
+<td style="width: 50%;" valign="top">
+<h2>Welcome to Photo Publisher</h2>
 <p>
+Welcome to Photo Publisher by Christopher Zenzel. With Photo Publisher you can create great photo albums for your web site without needing to know a lot of code. The best part of Photo Publisher is that this tool integrates with your existing social media tools to create albums that can be published on any web site that allows basic XHTML code.
+</p>
+<h3>Advantages of Photo Publisher</h3>
 <ul>
-<li><strong><a target="_blank" href="https://itunes.apple.com/artist/christopher-zenzel/id317388804?mt=8">My Applications on the iTunes Application Store</a></strong></li>
-<li><strong><a target="_blank" href="https://itunes.apple.com/artist/christopher-zenzel/id317388804?mt=12">My Applications on the Mac Application Store</a></strong></li>
+	<li>Creative Commons Open Source - Free to use for everyone</li>
+	<li>Less usage of your storage space on hosting providers</li>
+	<li>No scripts required for basic functionality</li>
+	<li>Photographs are ready for Lightbox integration in any site at any time</li>
+	<li>and much more...</li>
 </ul>
+</td>
+<td style="width: 50%;" valign="top">
+<h2>Tools</h2>
+<ul>
+	<li><a href="google-plus.htm">Google Plus and Picasa Photo Albums</a></li>
+	<li><a href="facebook.htm">Facebook Photo Albums</a> (Experimental)</li>
+</ul>
+</td>
+</tr>
+</table>
+
+<h2>Get Started</h2>
+<p>
+To get started please select a tool you wish to use from the Photo Publisher. Each tool is directly related to the social network it can use. Please note that some features are experimental and may not work 100%.
 </p>
 
-<h2>License</h2>
-<p>This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/. This is a work of Christopher Zenzel and was published to GitHub to help contribute code to the community to help people build web sites.</p>
-
-<h2>Copyright</h2>
-<p style="text-align: center;">&copy; Copyright 2013-14 Christopher David Zenzel. All Rights Reserved.</p>
-<p>&nbsp;</p>
-
-<!-- // End // -->
-
-</div></div>
-
-</body>
+<h2>Privacy Policy and Terms of Use</h2>
+<p>
+We do not store any information provided to the web pages. The values you provide for retrieving album information are specifically used for calls made by your browser directly to the social media provider. There is <strong>no</strong> go between proxy servers or methods storing any of your data on a server. 
+</p>
+<p>
+We may store data on your computer in order to enhance your experience such as storing application keys to help you with not having to enter values every time you use this application. We use &quot;cookies&quot; to do so. By using this application you agree to the use of cookies.
+</p>
+<p>
+This application is open source and experimental. We cannot guarantee that it will work forever, but we will try our best to make sure to update it to do so. We are not responsible for any misuse of this application or your use of this application. We are not responsible for any damages. You are using this application and we hold no responsibility for anything that occurs.
+</p>
+<p>
+When using application keys please be advised of the privileges you grant that key. Even though keys are transmitted straight to the social media provider using SSL you must account for the privileges that might get intercepted by other people such as at a coffee shop. We are not responsible for over-granting privileges. The safest use is to grant read-only privileges, such as with an Explorer tool, to photographs and/or videos so no post-based requests are made with your application keys.
+</p>
+<p>
+To the basics: You are using an experimental and/or release version of an open source application and we take no responsibility for damages or downtime. We try our best to help so please use our Bug Tracker for any help you might need.
+</p>
+			</div>
+		</div>
+		<div id="footer">
+			&copy; Copyright 2014 Christopher Zenzel
+		</div>
+	</body>
 </html>

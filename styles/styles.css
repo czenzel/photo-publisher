@@ -1,0 +1,133 @@
+/*
+
+ Photo Publisher
+ Copyright 2014-15 Christopher Zenzel
+
+ */
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #d5d1d1;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 10pt;
+}
+
+#container {
+	max-width: 980px;
+	min-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+#inner-container {
+	background: White;
+	border: 1px solid black;
+	border-top: 0;
+	padding: 30px;
+	min-height: 450px;
+}
+
+#header {
+	position: relative;
+	width: 100%;
+	height: 80px;
+	background: url(../images/header.png);
+}
+
+#footer {
+	clear: both;
+	margin-top: 25px;
+	text-align: center;
+	font-size: 8pt;
+	margin-bottom: 35px;
+}
+
+#header .site-logo {
+	position: absolute;
+	top: 10px;
+	left: 40px;
+	border: 0;
+	width: auto !important;
+	height: 70% !important;
+}
+
+#header .site-title {
+	position: absolute;
+	top: 25px;
+	right: 40px;
+	margin: 0;
+	padding: 0;
+	color: White;
+	font-weight: normal;
+	font-size: 18pt;
+}
+
+input[type=text] {
+	border: 1px solid black;
+	width: 100%;
+	height: 30px;
+	font-size: 18px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input[type=number] {
+	border: 1px solid black;
+	width: 100%;
+	height: 30px;
+	font-size: 18px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input[type=button] {
+	border: 1px solid black;
+	background: LightBlue;
+	height: 40px;
+	padding: 8px;
+}
+
+.input-para {
+	text-align: center;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+#albumCode {
+	width: 100%;
+	height: 250px;
+}
+
+#photoPreviews img {
+	margin: 20px;
+}
+
+.selectedphoto {
+	border: 4px solid green;
+}
+
+.unselectphoto {
+	border: 0;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+#header h1 a {
+	color: White;
+	text-decoration: none;
+}
+
+#header h1 a:hover {
+	color: LightGrey;
+}
+
+a { color: Navy; text-decoration: none; }
+a:hover { color: Red; }
