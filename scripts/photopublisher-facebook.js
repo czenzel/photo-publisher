@@ -101,7 +101,7 @@ function getAlbumFB() {
     
     var albumLink = document.getElementById('txtAlbumLink').value;
 
-    var albumRegex = /https:\/\/www\.facebook\.com\/(.*)\/media_set\?set\=a\.(\d*)\.(.*)[\&.*]?/i;
+    var albumRegex = /https:\/\/www\.facebook\.com\/(.*\/media_set|media\/set\/)\?set\=a\.(\d*)\.(.*)[\&.*]?/i;
 
     var match = albumRegex.exec(albumLink);
     var access_token = document.getElementById('txtAccessTokenId').value;
