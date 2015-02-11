@@ -44,7 +44,7 @@ function refreshSelectedPhotos() {
 
 	for (var i = 0; i < selectedPhotos.length; i++) {
 
-		var thumbnail = photosFeed.data[selectedPhotos[i]].images[5].source;
+		var thumbnail = photosFeed.data[selectedPhotos[i]].images[selectedPhotos[i]].images.length - 1].source;
 		var photoLink = photosFeed.data[selectedPhotos[i]].images[0].source;
 
 		outputImages[i] = '<a rel="lightbox" href="' + photoLink + '" target="_blank"><img src="' + thumbnail + '" alt="" border="0" style="margin: ' + photoMargin + 'px;" /></a>';
