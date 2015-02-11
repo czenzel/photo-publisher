@@ -31,7 +31,7 @@ function getPhotosInfo(data) {
 	var photoIndex = 0;
 
 	for (photoIndex = 0; photoIndex < photosFeed.data.length; photoIndex++) {
-		var thumbnail = photosFeed.data[photoIndex].images[5].source;
+		var thumbnail = photosFeed.data[photoIndex].images[photosFeed.data[photoIndex].images.length - 1].source;
 		outputHtml += '<a href="javascript:selectPhoto(' + photoIndex + ');"><img src="' + thumbnail + '" alt="Thumbnail Preview" id="spht_' + photoIndex + '" /></a>';
 	}
 
@@ -44,7 +44,7 @@ function refreshSelectedPhotos() {
 
 	for (var i = 0; i < selectedPhotos.length; i++) {
 
-		var thumbnail = photosFeed.data[selectedPhotos[i]].images[5].source;
+		var thumbnail = photosFeed.data[selectedPhotos[i]].images[photosFeed.data[selectedPhotos[i]].images.length - 1].source;
 		var photoLink = photosFeed.data[selectedPhotos[i]].images[0].source;
 
 		outputImages[i] = '<a rel="lightbox" href="' + photoLink + '" target="_blank"><img src="' + thumbnail + '" alt="" border="0" style="margin: ' + photoMargin + 'px;" /></a>';
